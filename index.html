@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Aishwarya Mundada - Product Strategy, Growth & AI Builder."/>
+  <title>Aishwarya Mundada - Product - Growth - AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f5f0ed;
+      --surface: #ede5df;
+      --border:  #d0b09a;
+      --text:    #02000d;
+      --navy:    #07203f;
+      --accent:  #a65e46;
+      --tan:     #d9aa90;
+      --muted:   #6b4e3d;
+      --white:   #ffffff;
+      --ease:    cubic-bezier(0.4,0,0.2,1);
+      --mono:    'SFMono-Regular','Consolas',monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    body::before { content:''; position:fixed; inset:0; background-image:radial-gradient(circle,#c4a898 1px,transparent 1px); background-size:30px 30px; opacity:.28; pointer-events:none; z-index:0; }
+    .blob { position:fixed; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; }
+    .blob-1 { width:440px; height:440px; background:rgba(166,94,70,.09); top:-80px; right:-80px; }
+    .blob-2 { width:340px; height:340px; background:rgba(7,32,63,.05); bottom:8%; left:-60px; }
+
+    #scrollProg { position:fixed; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--navy),var(--accent)); z-index:300; transition:width .1s linear; }
+    #glow { pointer-events:none; position:fixed; width:460px; height:460px; border-radius:50%; background:radial-gradient(circle,rgba(166,94,70,.06) 0%,transparent 68%); transform:translate(-50%,-50%); z-index:0; transition:left .1s ease,top .1s ease; }
+
+    /* ── SCROLL TO TOP ── */
+    #scrollTop {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: none;
+      box-shadow: 0 4px 16px rgba(2,0,13,.18);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .3s, transform .3s, background .2s;
+    }
+    #scrollTop.visible { opacity: 1; transform: translateY(0); }
+    #scrollTop:hover { background: var(--accent); }
+    #scrollTop svg { width: 18px; height: 18px; }
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:62px; background:rgba(245,240,237,.92); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 52px; transition:box-shadow .3s; }
+    nav.scrolled { box-shadow:0 2px 24px rgba(2,0,13,.07); }
+    .nav-logo { font-size:14px; font-weight:700; color:var(--navy); z-index:1; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex; gap:34px; list-style:none; z-index:1; }
+    .nav-links a { font-size:13px; color:var(--muted); position:relative; padding-bottom:3px; transition:color .2s; }
+    .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); border-radius:2px; transition:width .25s var(--ease); }
+    .nav-links a:hover, .nav-links a.active { color:var(--navy); }
+    .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+
+    .container { max-width: 960px; margin:0 auto; padding:0 36px; position:relative; z-index:1; }
+    section { padding:96px 0 56px; }
+
+    .fu { opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease),transform .6s var(--ease); }
+    .fu.in { opacity:1; transform:translateY(0); }
+    .fu[data-d="1"] { transition-delay:80ms; }
+    .fu[data-d="2"] { transition-delay:160ms; }
+    .fu[data-d="3"] { transition-delay:240ms; }
+
+    .sec-heading { font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-.02em; line-height:1.2; margin-bottom:44px; color:var(--navy); }
+    .sec-heading em { font-style:italic; font-weight:300; color:var(--muted); }
+
+    /* ══ HERO ══ */
+    #hero { min-height:100vh; padding-top:62px; display:flex; align-items:center; }
+    .hero-grid { display:grid; grid-template-columns:1fr 360px; gap:60px; align-items:center; width:100%; }
+    .hero-name { font-size:clamp(46px,6.5vw,80px); font-weight:800; line-height:1.0; letter-spacing:-.035em; margin-bottom:22px; color:var(--navy); }
+    .hero-name em { font-style:italic; font-weight:300; color:var(--accent); }
+    .hero-tagline { font-size:17px; color:var(--muted); max-width:440px; line-height:1.75; margin-bottom:32px; }
+    .hero-tagline strong { color:var(--navy); font-weight:600; }
+    .hero-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+    .chip { font-size:12px; font-family:var(--mono); background:var(--white); border:1px solid var(--border); padding:5px 14px; border-radius:100px; color:var(--muted); transition:all .18s; }
+    a.chip:hover { background:var(--tan); border-color:var(--accent); color:var(--navy); transform:translateY(-1px); }
+    .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:7px; font-size:14px; font-weight:500; padding:11px 24px; border-radius:8px; border:none; cursor:pointer; font-family:'Inter',sans-serif; transition:all .2s var(--ease); }
+    .btn-primary { background:var(--navy); color:var(--bg); box-shadow:0 2px 14px rgba(2,0,13,.16); }
+    .btn-primary:hover { background:#0c3060; transform:translateY(-2px); }
+    .btn-outline { background:transparent; color:var(--navy); border:1.5px solid var(--border); }
+    .btn-outline:hover { background:var(--white); border-color:var(--navy); transform:translateY(-2px); }
+    .btn-accent { background:var(--accent); color:var(--bg); }
+    .btn-accent:hover { background:#8f4e39; transform:translateY(-2px); box-shadow:0 6px 20px rgba(166,94,70,.28); }
+
+    /* PHOTO */
+    .photo-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
+    .photo-ring { width:300px; height:300px; border-radius:50%; border:2px dashed var(--border); display:flex; align-items:center; justify-content:center; animation:spin 40s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .photo-circle { width:272px; height:272px; border-radius:50%; background:linear-gradient(135deg,var(--surface) 0%,var(--tan) 100%); border:2px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; animation:spin 40s linear infinite reverse; position:relative; z-index:2; overflow:hidden; }
+    .photo-circle img { width:100%; height:100%; object-fit:cover; border-radius:50%; display:none; }
+    .photo-initials { font-size:60px; font-weight:800; color:var(--navy); letter-spacing:-.04em; line-height:1; }
+    .photo-hint { font-size:11px; font-family:var(--mono); color:var(--muted); letter-spacing:.06em; }
+
+    /* ══ TYPEWRITER BAND ══ */
+    .typewriter-band { background:var(--navy); padding:40px 0; position:relative; z-index:1; text-align:center; }
+    .tw-label { display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:12px; letter-spacing:.12em; color:var(--tan); text-transform:uppercase; margin-bottom:14px; }
+    .tw-dot { width:8px; height:8px; border-radius:50%; background:#4ade80; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .tw-prefix { font-size:clamp(16px,2.5vw,22px); font-weight:300; color:rgba(245,240,237,.65); margin-bottom:6px; }
+    .tw-role { font-size:clamp(26px,4vw,42px); font-weight:800; color:var(--bg); letter-spacing:-.02em; min-height:1.25em; }
+    .tw-cursor { display:inline-block; width:3px; height:.85em; background:var(--accent); margin-left:4px; vertical-align:middle; animation:blink .7s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ══ ABOUT ══ */
+    .about-grid { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:start; }
+    .about-text { font-size:16px; line-height:1.85; color:#2a1a10; max-width:560px; }
+    .about-text strong { color:var(--navy); font-weight:600; }
+    .about-logos { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; }
+    .stats-panel { display:grid; grid-template-columns:1fr 1fr; gap:12px; min-width:200px; }
+    .stat-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:18px 16px; text-align:center; transition:box-shadow .2s,border-color .2s; }
+    .stat-card:hover { box-shadow:0 6px 24px rgba(2,0,13,.07); border-color:var(--accent); }
+    .stat-num { font-size:34px; font-weight:800; color:var(--navy); letter-spacing:-.03em; line-height:1; }
+    .stat-label { font-size:10px; font-family:var(--mono); color:var(--muted); margin-top:4px; letter-spacing:.06em; text-transform:uppercase; }
+
+    /* ══ EXPERIENCE TIMELINE ══ */
+    .exp-timeline { position:relative; padding:12px 0 0; }
+    .exp-timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--accent) 0%,var(--border) 100%); transform:translateX(-50%); }
+
+    .exp-entry { display:flex; padding-bottom:44px; position:relative; scroll-margin-top: 90px; }
+    .exp-entry.left  { justify-content:flex-end; padding-right:calc(50% + 32px); }
+    .exp-entry.right { justify-content:flex-start; padding-left:calc(50% + 32px); }
+
+    /* dot */
+    .exp-entry::after { content:''; position:absolute; left:50%; top:18px; width:12px; height:12px; border-radius:50%; background:var(--white); border:3px solid var(--accent); transform:translateX(-50%); z-index:2; transition:background .2s; }
+    .exp-entry:hover::after { background:var(--accent); }
+
+    /* horizontal connector line — removed */
+
+    /* side label: year + location — in the empty half opposite the card */
+    .exp-side {
+      position:absolute; top:10px;
+      font-family:var(--mono);
+      line-height:1.4;
+    }
+    .exp-entry.left  .exp-side { left:calc(50% + 18px); text-align:left; }
+    .exp-entry.right .exp-side { right:calc(50% + 18px); text-align:right; }
+    .exp-side-year { font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.04em; }
+    .exp-side-loc  { font-size:11px; color:var(--muted); letter-spacing:.03em; margin-top:2px; }
+
+    .exp-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:22px 26px; max-width:410px; width:100%; transition:box-shadow .25s,border-color .25s,transform .25s var(--ease); }
+    .exp-entry:hover .exp-card { box-shadow:0 8px 32px rgba(2,0,13,.09); border-color:var(--accent); transform:translateY(-2px); }
+
+    .exp-company-link { font-size:18px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:3px; display:inline-flex; align-items:center; gap:5px; transition:color .15s; }
+    .exp-company-link:hover { color:var(--accent); }
+    .exp-company-link .ext { font-size:13px; opacity:.6; }
+    .exp-role    { font-size:12px; font-weight:500; color:var(--accent); margin-bottom:12px; }
+    .exp-summary { font-size:13px; line-height:1.65; color:var(--muted); margin-bottom:12px; }
+    .exp-metrics { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
+    .metric { font-size:11px; font-weight:600; font-family:var(--mono); padding:4px 10px; border-radius:6px; }
+    .m-b { background:rgba(7,32,63,.1);  color:var(--navy); }
+    .m-g { background:#ecfdf5; color:#065f46; }
+    .m-a { background:rgba(166,94,70,.12); color:var(--accent); }
+    .m-p { background:#f5f3ff; color:#5b21b6; }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:5px; }
+    .tag { font-size:10px; font-family:var(--mono); background:var(--surface); color:var(--muted); border:1px solid var(--border); padding:3px 10px; border-radius:100px; transition:all .15s; }
+    .tag:hover { background:var(--tan); border-color:var(--accent); color:var(--navy); }
+
+    /* ══ PROJECTS ══ */
+    .proj-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px; }
+    .proj-card { border:1px solid var(--border); border-radius:14px; padding:28px; background:var(--white); display:flex; flex-direction:column; gap:10px; transition:box-shadow .25s,border-color .25s,transform .25s var(--ease); cursor:pointer; }
+    .proj-card:hover { box-shadow:0 8px 32px rgba(2,0,13,.09); border-color:var(--accent); transform:translateY(-3px); }
+    .proj-placeholder { border:2px dashed var(--border); background:var(--surface); align-items:center; justify-content:center; text-align:center; min-height:180px; color:var(--muted); font-size:14px; }
+    .ph-icon { font-size:26px; opacity:.28; margin-bottom:8px; }
+
+    /* ══ SKILLS ══ */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
+    .sk-card { border:1px solid var(--border); border-radius:14px; padding:24px; background:var(--white); transition:box-shadow .2s,transform .2s var(--ease),border-color .2s; }
+    .sk-card:hover { box-shadow:0 6px 24px rgba(2,0,13,.07); transform:translateY(-2px); border-color:var(--accent); }
+    .sk-cat { font-size:16px; font-weight:700; letter-spacing:-.01em; margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid; }
+    .sk-cat.p { color:var(--accent); border-color:var(--accent); }
+    .sk-cat.t { color:var(--navy); border-color:var(--navy); }
+    .sk-cat.a { color:#059669; border-color:#059669; }
+    .sk-cat.b { color:#7c3aed; border-color:#7c3aed; }
+    .sk-items { display:flex; flex-direction:column; gap:4px; }
+    .sk-item { font-size:13px; color:var(--text); padding:4px 0; border-bottom:1px solid var(--border); }
+    .sk-item:last-child { border-bottom:none; }
+
+    /* ══ EDUCATION - 1x3 horizontal ══ */
+    .edu-list { display:flex; flex-direction:row; gap:14px; flex-wrap:wrap; }
+    .edu-item { border:1px solid var(--border); border-radius:14px; padding:24px 22px; background:var(--white); flex:1; min-width:220px; display:flex; flex-direction:column; gap:5px; transition:box-shadow .2s,border-color .2s,transform .2s; }
+    .edu-item:hover { box-shadow:0 4px 20px rgba(2,0,13,.07); border-color:var(--accent); transform:translateY(-2px); }
+    .edu-degree { font-size:16px; font-weight:700; color:var(--navy); line-height:1.25; letter-spacing:-.01em; }
+    .edu-school-link { font-size:12px; color:var(--accent); font-weight:500; transition:color .15s; line-height:1.4; }
+    .edu-school-link:hover { color:var(--navy); text-decoration:underline; }
+    .edu-desc { font-size:12px; color:var(--muted); line-height:1.55; margin-top:4px; }
+    .edu-year { font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:auto; padding-top:12px; border-top:1px solid var(--border); }
+
+    /* ══ CONTACT ══ */
+    #contact { padding-bottom:120px; }
+    .contact-heading { font-size:clamp(32px,5vw,52px); font-weight:800; letter-spacing:-.025em; line-height:1.1; margin-bottom:14px; color:var(--navy); }
+    .contact-heading em { font-style:italic; font-weight:300; color:var(--accent); }
+    .contact-sub { font-size:15px; color:var(--muted); max-width:460px; margin-bottom:40px; line-height:1.75; }
+    .contact-list { display:flex; flex-direction:row; gap:14px; flex-wrap:wrap; }
+    .contact-row { display:flex; flex-direction:column; gap:8px; padding:20px 22px; border:1px solid var(--border); border-radius:14px; background:var(--white); transition:all .2s var(--ease); flex:1; min-width:180px; }
+    .contact-row:hover { border-color:var(--accent); background:var(--tan); transform:translateY(-3px); box-shadow:0 6px 20px rgba(2,0,13,.09); }
+    .cr-label { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+    .cr-main-row { display:flex; align-items:center; gap:8px; min-width:0; }
+    .cr-icon { width:18px; height:18px; color:var(--accent); flex-shrink:0; }
+    .cr-val { font-size:13px; font-weight:600; color:var(--navy); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .cr-arrow { font-size:14px; color:var(--muted); transition:transform .2s,color .2s; flex-shrink:0; }
+    .contact-row:hover .cr-arrow { transform:translateX(4px); color:var(--navy); }
+
+    footer { border-top:1px solid var(--border); padding:28px 0; text-align:center; font-size:12px; color:var(--muted); font-family:var(--mono); position:relative; z-index:1; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width:860px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .photo-wrap { display:none; }
+      .about-grid { grid-template-columns:1fr; }
+      .stats-panel { grid-template-columns:repeat(4,1fr); }
+    }
+    @media (max-width:700px) {
+      nav { padding:0 20px; }
+      .nav-links { gap:18px; }
+      .container { padding:0 20px; }
+      section { padding:72px 0 48px; }
+      .hero-name { font-size:46px; }
+      .exp-timeline::before { left:16px; }
+      .exp-entry.left, .exp-entry.right { justify-content:flex-start; padding-left:44px; padding-right:0; }
+      .exp-entry.left::after, .exp-entry.right::after { left:16px; }
+      .exp-entry.left::before, .exp-entry.right::before { left:27px; right:auto; width:17px; }
+      .exp-side { display:none; }
+      .exp-card { max-width:100%; }
+      .edu-list { flex-direction:column; }
+      .contact-list { flex-direction:column; }
+      .stats-panel { grid-template-columns:1fr 1fr; }
+      #scrollTop { bottom:16px; right:16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scrollProg"></div>
+<div id="glow"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Aishwarya <span>Mundada</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about"      data-s="about">About</a></li>
+    <li><a href="#experience" data-s="experience">Experience</a></li>
+    <li><a href="#projects"   data-s="projects">Projects</a></li>
+    <li><a href="#skills"     data-s="skills">Skills</a></li>
+    <li><a href="#contact"    data-s="contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-name fu">AISHWARYA<br><em>MUNDADA</em></h1>
+        <p class="hero-tagline fu" data-d="1">
+          <strong>Product Strategy · Growth · AI Builder.</strong><br>
+          I turn data and user insight into product growth.
+        </p>
+        <div class="hero-chips fu" data-d="2">
+          <span class="chip">Marketplaces</span>
+          <span class="chip">Ad Tech</span>
+          <span class="chip">Healthcare</span>
+          <span class="chip">Agentic AI</span>
+        </div>
+        <div class="hero-btns fu" data-d="3">
+          <a href="#experience" class="btn btn-primary">See my work ↓</a>
+          <a href="#contact"    class="btn btn-outline">Get in touch ↗</a>
+          <a href="resume.pdf"           class="btn btn-accent" download>Download Resume ↓</a>
+        </div>
+      </div>
+      <div class="photo-wrap fu" data-d="1">
+        <div class="photo-ring">
+          <div class="photo-circle">
+            <img
+              src="am.jpg"
+              alt="Aishwarya Mundada"
+              onload="this.style.display='block'; document.getElementById('photoPlaceholder').style.display='none';"
+              onerror="this.style.display='none';"
+            />
+            <div id="photoPlaceholder" style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+              <div class="photo-initials">AM</div>
+              <div class="photo-hint">Add photo here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPEWRITER BAND -->
+<div class="typewriter-band">
+  <div class="tw-label"><span class="tw-dot"></span> Open to Work</div>
+  <div class="tw-prefix">Actively looking for roles in</div>
+  <div class="tw-role" id="twRole">&nbsp;<span class="tw-cursor"></span></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="sec-heading fu">Building where <em>strategy</em> meets execution.</h2>
+    <div class="about-grid">
+      <div>
+        <p class="about-text fu">
+          <strong>3+ years</strong> in product, growth & strategy across consumer marketplaces, ad tech and medical devices - backed by a <strong>management and technology</strong> foundation. I combine data fluency with strategic thinking to run experiments, define roadmaps, and make change stick.
+        </p>
+        <div class="about-logos fu">
+          <a href="#exp-deckers"  class="chip">Deckers / HOKA</a>
+          <a href="#exp-swiggy"   class="chip">Swiggy</a>
+          <a href="#exp-bd"       class="chip">Becton Dickinson</a>
+          <a href="#exp-amazon"   class="chip">Amazon</a>
+          <a href="#exp-keywordio" class="chip">Keywordio</a>
+        </div>
+      </div>
+      <div class="stats-panel">
+        <div class="stat-card fu">
+          <div class="stat-num"><span data-count="3">0</span>+</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
+        <div class="stat-card fu" data-d="1">
+          <div class="stat-num"><span data-count="5">0</span></div>
+          <div class="stat-label">Companies</div>
+        </div>
+        <div class="stat-card fu" data-d="2">
+          <div class="stat-num"><span data-count="20">0</span>M+</div>
+          <div class="stat-label">Users Reached</div>
+        </div>
+        <div class="stat-card fu" data-d="3">
+          <div class="stat-num"><span data-count="3">0</span></div>
+          <div class="stat-label">Degrees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <h2 class="sec-heading fu">Where I've <em>worked.</em></h2>
+    <div class="exp-timeline">
+
+      <div class="exp-entry left fu" id="exp-deckers">
+        <div class="exp-side">
+          <div class="exp-side-year">2026</div>
+          <div class="exp-side-loc">Santa Barbara, CA, USA</div>
+        </div>
+        <div class="exp-card">
+          <a href="https://www.deckers.com/" target="_blank" class="exp-company-link">Deckers Brands <span class="ext">↗</span></a>
+          <div class="exp-role">Product Strategy & Market Expansion Analyst</div>
+          <p class="exp-summary">Led 60+ athlete interviews across 5 sports to surface white spaces for HOKA's next performance shoe; delivered phased GTM roadmap with go/no-go criteria.</p>
+          <div class="exp-metrics">
+            <span class="metric m-b">60+ Interviews</span>
+            <span class="metric m-g">5 Sports Analysed</span>
+            <span class="metric m-a">2 Priority Categories</span>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">GTM Strategy</span><span class="tag">User Research</span>
+            <span class="tag">Market Expansion</span><span class="tag">Roadmapping</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-entry right fu" id="exp-swiggy">
+        <div class="exp-side">
+          <div class="exp-side-year">2024</div>
+          <div class="exp-side-loc">Hyderabad, India</div>
+        </div>
+        <div class="exp-card">
+          <a href="https://www.swiggy.com/corporate/" target="_blank" class="exp-company-link">Swiggy <span class="ext">↗</span></a>
+          <div class="exp-role">Strategic Account Manager</div>
+          <p class="exp-summary">Redesigned restaurant growth strategy around contribution margin, A/B tested re-engagement campaigns, and scaled WAUs 3x during peak season.</p>
+          <div class="exp-metrics">
+            <span class="metric m-b">+30% Revenue</span>
+            <span class="metric m-g">+12% Market Share</span>
+            <span class="metric m-a">-15% Mktg Spend</span>
+            <span class="metric m-p">3x WAU Growth</span>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">A/B Testing</span><span class="tag">Growth</span>
+            <span class="tag">Unit Economics</span><span class="tag">Marketplaces</span><span class="tag">Food Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-entry left fu" id="exp-bd">
+        <div class="exp-side">
+          <div class="exp-side-year">2023</div>
+          <div class="exp-side-loc">Bangalore, India</div>
+        </div>
+        <div class="exp-card">
+          <a href="https://www.bd.com/en-us" target="_blank" class="exp-company-link">Becton, Dickinson & Co. <span class="ext">↗</span></a>
+          <div class="exp-role">Management Trainee</div>
+          <p class="exp-summary">Diagnosed adoption blockers across 20+ hospitals, designed clinical onboarding program, and built demand forecast model improving inventory turnover 30%.</p>
+          <div class="exp-metrics">
+            <span class="metric m-g">+28% Revenue</span>
+            <span class="metric m-b">+20% New Customers</span>
+            <span class="metric m-p">+30% Inv. Turnover</span>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Healthcare</span><span class="tag">Demand Forecasting</span>
+            <span class="tag">Onboarding</span><span class="tag">Revenue Growth</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-entry right fu" id="exp-amazon">
+        <div class="exp-side">
+          <div class="exp-side-year">2022</div>
+          <div class="exp-side-loc">Bangalore, India</div>
+        </div>
+        <div class="exp-card">
+          <a href="https://www.amazon.com" target="_blank" class="exp-company-link">Amazon <span class="ext">↗</span></a>
+          <div class="exp-role">Operations Management Intern</div>
+          <p class="exp-summary">Automated manual reviews cutting TAT 25%, diagnosed self-serve portal friction, and resolved a compliance gap spanning 4 org teams.</p>
+          <div class="exp-metrics">
+            <span class="metric m-b">-25% TAT</span>
+            <span class="metric m-a">-15% Escalations</span>
+            <span class="metric m-g">-10% Resolution Cost</span>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Process Automation</span><span class="tag">Operations</span><span class="tag">UX Research</span><span class="tag">RCA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-entry left fu" id="exp-keywordio">
+        <div class="exp-side">
+          <div class="exp-side-year">2020</div>
+          <div class="exp-side-loc">Pune, India</div>
+        </div>
+        <div class="exp-card">
+          <a href="https://www.keywordio.com/" target="_blank" class="exp-company-link">Keywordio <span class="ext">↗</span></a>
+          <div class="exp-role">Software Engineer</div>
+          <p class="exp-summary">Shipped 3 ad ops tools end-to-end eliminating 2 hrs/day manual work; built CPA dashboards lifting ROAS 20%; cut platform latency 70%.</p>
+          <div class="exp-metrics">
+            <span class="metric m-g">+20% ROAS</span>
+            <span class="metric m-p">-70% Latency</span>
+            <span class="metric m-b">3 Tools Shipped</span>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Python</span><span class="tag">Ad Tech</span>
+            <span class="tag">API Design</span><span class="tag">Product Development</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2 class="sec-heading fu">Selected <em>work.</em></h2>
+    <div class="proj-grid">
+      <!-- P/01: Smartphone Addiction -->
+      <a href="https://github.com/aishw-m/Smartphone_Addiction_in_Teens" target="_blank" class="proj-card fu" style="text-decoration:none;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+          <span style="font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:700;letter-spacing:.08em;">P / 01</span>
+          <svg style="width:14px;height:14px;color:var(--muted);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <div style="font-size:17px;font-weight:700;color:var(--navy);line-height:1.25;margin-top:4px;">Predicting Teen Mental Health Crisis via Phone Usage</div>
+        <div style="font-size:12px;color:var(--accent);font-weight:500;margin-top:4px;">Lead Modeler · UCSB Data Analytics Project</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Built a Random Forest classifier for a health insurance client to predict high-risk teens based on behavioral patterns - improving crisis detection from 66% to 92% recall and capturing $377K in net value over the baseline.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;">
+          <span class="tag">Random Forest</span>
+          <span class="tag">Python</span>
+          <span class="tag">Classification</span>
+          <span class="tag">ROI Analysis</span>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">92%</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Recall</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">$377K</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Net Value</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">3K</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Teens Analysed</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- P/02: Daily Jobs Scraper -->
+      <a href="https://github.com/aishw-m/daily-jobs-scraper" target="_blank" class="proj-card fu" data-d="1" style="text-decoration:none;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+          <span style="font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:700;letter-spacing:.08em;">P / 02</span>
+          <svg style="width:14px;height:14px;color:var(--muted);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <div style="font-size:17px;font-weight:700;color:var(--navy);line-height:1.25;margin-top:4px;">Daily Jobs Scraper</div>
+        <div style="font-size:12px;color:var(--accent);font-weight:500;margin-top:4px;">Personal Tool · Python & Flask</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Built because no single job board surfaces fresh listings well. Pulls openings from 11 platforms into one searchable local view — filtered by role, recency, and years of experience. Runs entirely on your machine; results never leave it.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Web Scraping</span>
+          <span class="tag">Automation</span>
+          <span class="tag">REST APIs</span>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">11</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Sources</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">56</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Curated Roles</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">24h</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Default Window</div>
+          </div>
+        </div>
+      </a>
+      <div class="proj-card proj-placeholder fu" data-d="2">
+        <div class="ph-icon">◎</div>
+        <span style="font-weight:600;color:var(--muted)">Coming soon</span>
+        <span style="font-size:11px;font-family:var(--mono);color:var(--border)">P / 03 · In progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="sec-heading fu">How I <em>work.</em></h2>
+    <div class="skills-grid">
+      <div class="sk-card fu">
+        <div class="sk-cat p">Product</div>
+        <div class="sk-items">
+          <div class="sk-item">Problem-Solving</div><div class="sk-item">Roadmapping</div>
+          <div class="sk-item">A/B Testing</div><div class="sk-item">PRD Writing</div>
+          <div class="sk-item">Funnel Analysis</div><div class="sk-item">User Research</div>
+        </div>
+      </div>
+      <div class="sk-card fu" data-d="1">
+        <div class="sk-cat t">Technical</div>
+        <div class="sk-items">
+          <div class="sk-item">Agentic AI</div><div class="sk-item">Prompt Engineering</div>
+          <div class="sk-item">Python</div><div class="sk-item">SQL</div>
+          <div class="sk-item">Git</div>
+          <div class="sk-item">Database Architecture</div>
+        </div>
+      </div>
+      <div class="sk-card fu" data-d="2">
+        <div class="sk-cat a">Analytics</div>
+        <div class="sk-items">
+          <div class="sk-item">Excel</div><div class="sk-item">Google Analytics</div>
+          <div class="sk-item">Tableau</div><div class="sk-item">Power BI</div>
+          <div class="sk-item">Unit Economics</div><div class="sk-item">Demand Forecasting</div>
+        </div>
+      </div>
+      <div class="sk-card fu" data-d="3">
+        <div class="sk-cat b">Business</div>
+        <div class="sk-items">
+          <div class="sk-item">Cross-functional Collab</div><div class="sk-item">Stakeholder Mgmt</div>
+          <div class="sk-item">P&L Ownership</div><div class="sk-item">GTM Strategy</div>
+          <div class="sk-item">Communication</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <h2 class="sec-heading fu">Where I've <em>learned.</em></h2>
+    <div class="edu-list">
+      <div class="edu-item fu">
+        <div class="edu-degree">Master of Technology Management</div>
+        <a href="https://www.ucsb.edu/" target="_blank" class="edu-school-link">University of California, Santa Barbara, USA ↗</a>
+        <p class="edu-desc">Focus on working with AI, product strategy, and digital transformation.</p>
+        <div class="edu-year">2025 - Jun 2026</div>
+      </div>
+      <div class="edu-item fu" data-d="1">
+        <div class="edu-degree">MBA, Marketing & Operations</div>
+        <a href="https://www.imt.edu/" target="_blank" class="edu-school-link">Institute of Management Technology, Ghaziabad, India ↗</a>
+        <p class="edu-desc">Post-graduate diploma in management, specialization in marketing, and business operations.</p>
+        <div class="edu-year">2021 - 2023</div>
+      </div>
+      <div class="edu-item fu" data-d="2">
+        <div class="edu-degree">Bachelor of Computer Science</div>
+        <a href="https://fergusson.edu/" target="_blank" class="edu-school-link">Fergusson College, Pune, India ↗</a>
+        <p class="edu-desc">Foundation in algorithms and software engineering shaping how I approach product and systems thinking.</p>
+        <div class="edu-year">2016 - 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="contact-heading fu">Let's build <em>something.</em></h2>
+    <p class="contact-sub fu">I'm looking for full-time product, strategy or growth roles starting summer 2026, at the intersection of technology and consumer products.<br><strong>Always happy to chat!</strong></p>
+    <div class="contact-list">
+
+      <a href="mailto:aishwarya.mundada2@gmail.com" class="contact-row fu" style="flex:1.6">
+        <span class="cr-label">Email</span>
+        <div class="cr-main-row">
+          <svg class="cr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/>
+          </svg>
+          <span class="cr-val">aishwarya.mundada2@gmail.com</span>
+          <span class="cr-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://linkedin.com/in/aishwarya-mundada" target="_blank" class="contact-row fu" data-d="1">
+        <span class="cr-label">LinkedIn</span>
+        <div class="cr-main-row">
+          <svg class="cr-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+          <span class="cr-val">in/aishwarya-mundada</span>
+          <span class="cr-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/aishw-m" target="_blank" class="contact-row fu" data-d="2">
+        <span class="cr-label">GitHub</span>
+        <div class="cr-main-row">
+          <svg class="cr-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span class="cr-val">@aishw-m</span>
+          <span class="cr-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 Aishwarya Mundada &nbsp;·&nbsp; Built with curiosity</div>
+</footer>
+
+<script>
+  // cursor glow
+  const glow=document.getElementById('glow');
+  document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';},{passive:true});
+
+  // scroll progress + nav + scroll-to-top
+  const bar=document.getElementById('scrollProg'),nav=document.getElementById('nav'),stBtn=document.getElementById('scrollTop');
+  const navA=document.querySelectorAll('.nav-links a[data-s]');
+  const secs=[...document.querySelectorAll('section[id]')];
+  window.addEventListener('scroll',()=>{
+    const pct=scrollY/(document.body.scrollHeight-innerHeight)*100;
+    bar.style.width=pct+'%';
+    nav.classList.toggle('scrolled',scrollY>20);
+    stBtn.classList.toggle('visible',scrollY>300);
+    let cur=''; secs.forEach(s=>{if(scrollY>=s.offsetTop-110)cur=s.id;});
+    navA.forEach(l=>l.classList.toggle('active',l.dataset.s===cur));
+  },{passive:true});
+
+  // fade-up
+  const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+  // stat counter — 600ms
+  function animCount(el){
+    const t=+el.dataset.count,d=600,s=performance.now();
+    const run=n=>{const p=Math.min((n-s)/d,1);el.textContent=Math.floor(p*t);if(p<1)requestAnimationFrame(run);else el.textContent=t;};
+    requestAnimationFrame(run);
+  }
+  new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('[data-count]').forEach(animCount);});
+  },{threshold:.4}).observe(document.querySelector('.stats-panel'));
+
+  // typewriter
+  const roles=['Strategic Growth & Operations','Marketing & GTM','AI Strategist'];
+  let ri=0,ci=0,del=false;
+  const twEl=document.getElementById('twRole');
+  function typewrite(){
+    const w=roles[ri];
+    if(!del){
+      ci++;
+      twEl.innerHTML=w.slice(0,ci)+'<span class="tw-cursor"></span>';
+      if(ci===w.length){setTimeout(()=>{del=true;typewrite();},2400);return;}
+      setTimeout(typewrite,75);
+    } else {
+      ci--;
+      twEl.innerHTML=w.slice(0,ci)+'<span class="tw-cursor"></span>';
+      if(ci===0){del=false;ri=(ri+1)%roles.length;setTimeout(typewrite,380);return;}
+      setTimeout(typewrite,40);
+    }
+  }
+  setTimeout(typewrite,900);
+</script>
+</body>
+</html>
