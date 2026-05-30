@@ -76,8 +76,8 @@
 
     /* ══ HERO ══ */
     #hero { min-height:100vh; padding-top:62px; display:flex; align-items:center; }
-    .hero-grid { display:grid; grid-template-columns:1fr 360px; gap:60px; align-items:center; width:100%; }
-    .hero-name { font-size:clamp(46px,6.5vw,80px); font-weight:800; line-height:1.0; letter-spacing:-.035em; margin-bottom:22px; color:var(--navy); }
+    .hero-grid { display:grid; grid-template-columns:1fr 360px; gap:60px; align-items:center; width:100%; padding: 48px 0 32px; }
+    .hero-name { font-size:clamp(38px,5.2vw,64px); font-weight:800; line-height:1.05; letter-spacing:-.03em; margin-bottom:20px; color:var(--navy); }
     .hero-name em { font-style:italic; font-weight:300; color:var(--accent); }
     .hero-tagline { font-size:17px; color:var(--muted); max-width:440px; line-height:1.75; margin-bottom:32px; }
     .hero-tagline strong { color:var(--navy); font-weight:600; }
@@ -104,13 +104,33 @@
 
     /* ══ TYPEWRITER BAND ══ */
     .typewriter-band { background:var(--navy); padding:40px 0; position:relative; z-index:1; text-align:center; }
-    .tw-label { display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:12px; letter-spacing:.12em; color:var(--tan); text-transform:uppercase; margin-bottom:14px; }
-    .tw-dot { width:8px; height:8px; border-radius:50%; background:#4ade80; animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-    .tw-prefix { font-size:clamp(16px,2.5vw,22px); font-weight:300; color:rgba(245,240,237,.65); margin-bottom:6px; }
-    .tw-role { font-size:clamp(26px,4vw,42px); font-weight:800; color:var(--bg); letter-spacing:-.02em; min-height:1.25em; }
-    .tw-cursor { display:inline-block; width:3px; height:.85em; background:var(--accent); margin-left:4px; vertical-align:middle; animation:blink .7s step-end infinite; }
+    .tw-cursor { display:inline-block; width:2px; height:.8em; background:var(--accent); margin-left:3px; vertical-align:middle; animation:blink .7s step-end infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* open to work block below photo */
+    .hero-otw {
+      margin-top: 20px; width: 100%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 18px 20px;
+      box-shadow: 0 2px 16px rgba(2,0,13,.06);
+    }
+    .otw-header { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+    .tw-dot { width:8px; height:8px; border-radius:50%; background:#4ade80; animation:pulse 2s infinite; flex-shrink:0; }
+    .otw-label { font-family:var(--mono); font-size:10px; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; font-weight:700; }
+    .otw-prefix { font-size:11px; color:var(--muted); font-family:var(--mono); letter-spacing:.04em; margin-left:auto; }
+    .otw-roles { display:flex; flex-direction:column; gap:7px; }
+    .otw-role {
+      padding: 9px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size:13px; font-weight:600; color:var(--navy);
+      text-align: center;
+      transition: background .18s, border-color .18s;
+    }
+    .otw-role:hover { background: var(--tan); border-color: var(--accent); }
 
     /* ══ ABOUT ══ */
     .about-grid { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:start; }
@@ -257,7 +277,6 @@
 <nav id="nav">
   <div class="nav-logo">Aishwarya <span>Mundada</span></div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about"      data-s="about">About</a></li>
     <li><a href="#experience" data-s="experience">Experience</a></li>
     <li><a href="#projects"   data-s="projects">Projects</a></li>
     <li><a href="#skills"     data-s="skills">Skills</a></li>
@@ -272,22 +291,15 @@
       <div>
         <h1 class="hero-name fu">AISHWARYA<br><em>MUNDADA</em></h1>
         <p class="hero-tagline fu" data-d="1">
-          <strong>Product Strategy · Growth · AI Builder.</strong><br>
-          I turn data and user insight into product growth.
+          <strong>3+ years</strong> in product, growth & strategy across consumer marketplaces, ad tech and medical devices, backed by a <strong>management and technology</strong> foundation. I combine data fluency and applied AI with strategic thinking to run experiments, define roadmaps, and align cross-functional teams in ambiguous environments.
         </p>
-        <div class="hero-chips fu" data-d="2">
-          <span class="chip">Marketplaces</span>
-          <span class="chip">Ad Tech</span>
-          <span class="chip">Healthcare</span>
-          <span class="chip">Agentic AI</span>
-        </div>
         <div class="hero-btns fu" data-d="3">
           <a href="#experience" class="btn btn-primary">See my work ↓</a>
           <a href="#contact"    class="btn btn-outline">Get in touch ↗</a>
-          <a href="Aishwarya_Mundada_Resume.pdf"           class="btn btn-accent" download>Download Resume ↓</a>
+          <a href="Aishwarya_Mundada_Resume.pdf" class="btn btn-accent" download>Download Resume ↓</a>
         </div>
       </div>
-      <div class="photo-wrap fu" data-d="1">
+      <div class="photo-wrap fu" data-d="1" style="flex-direction:column;align-items:center;">
         <div class="photo-ring">
           <div class="photo-circle">
             <img
@@ -301,61 +313,29 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TYPEWRITER BAND -->
-<div class="typewriter-band">
-  <div class="tw-label"><span class="tw-dot"></span> Open to Work</div>
-  <div class="tw-prefix">Actively looking for roles in</div>
-  <div class="tw-role" id="twRole">&nbsp;<span class="tw-cursor"></span></div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <h2 class="sec-heading fu">Building where <em>strategy</em> meets execution.</h2>
-    <div class="about-grid">
-      <div>
-        <p class="about-text fu">
-          <strong>3+ years</strong> in product, growth & strategy across consumer marketplaces, ad tech and medical devices - backed by a <strong>management and technology</strong> foundation. I combine data fluency with strategic thinking to run experiments, define roadmaps, and make change stick.
-        </p>
-        <div class="about-logos fu">
-          <a href="#exp-deckers"  class="chip">Deckers / HOKA</a>
-          <a href="#exp-swiggy"   class="chip">Swiggy</a>
-          <a href="#exp-bd"       class="chip">Becton Dickinson</a>
-          <a href="#exp-amazon"   class="chip">Amazon</a>
-          <a href="#exp-keywordio" class="chip">Keywordio</a>
-        </div>
-      </div>
-      <div class="stats-panel">
-        <div class="stat-card fu">
-          <div class="stat-num"><span data-count="3">0</span>+</div>
-          <div class="stat-label">Years Exp.</div>
-        </div>
-        <div class="stat-card fu" data-d="1">
-          <div class="stat-num"><span data-count="5">0</span></div>
-          <div class="stat-label">Companies</div>
-        </div>
-        <div class="stat-card fu" data-d="2">
-          <div class="stat-num"><span data-count="20">0</span>M+</div>
-          <div class="stat-label">Users Reached</div>
-        </div>
-        <div class="stat-card fu" data-d="3">
-          <div class="stat-num"><span data-count="3">0</span></div>
-          <div class="stat-label">Degrees</div>
+        <!-- Open to Work block -->
+        <div class="hero-otw">
+          <div class="otw-header">
+            <span class="tw-dot"></span>
+            <span class="otw-label">Open to Work</span>
+            <span class="otw-prefix">Looking for roles in</span>
+          </div>
+          <div class="otw-roles">
+            <div class="otw-role">Marketing & GTM</div>
+            <div class="otw-role">Applied AI & Strategy</div>
+            <div class="otw-role">Growth & Operations</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <h2 class="sec-heading fu">Where I've <em>worked.</em></h2>
+    <h2 class="sec-heading fu">Building where <em>strategy</em> meets execution.</h2>
     <div class="exp-timeline">
 
       <div class="exp-entry left fu" id="exp-deckers">
@@ -470,7 +450,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <h2 class="sec-heading fu">Selected <em>work.</em></h2>
+    <h2 class="sec-heading fu">Projects I've <em>built.</em></h2>
     <div class="proj-grid">
       <!-- P/01: Smartphone Addiction -->
       <a href="https://github.com/aishw-m/Smartphone_Addiction_in_Teens" target="_blank" class="proj-card fu" style="text-decoration:none;">
@@ -546,7 +526,7 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <h2 class="sec-heading fu">How I <em>work.</em></h2>
+    <h2 class="sec-heading fu">Skills I bring to <em>the table.</em></h2>
     <div class="skills-grid">
       <div class="sk-card fu">
         <div class="sk-cat p">Product</div>
@@ -588,7 +568,7 @@
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
-    <h2 class="sec-heading fu">Where I've <em>learned.</em></h2>
+    <h2 class="sec-heading fu">Where I sharpened <em>my thinking.</em></h2>
     <div class="edu-list">
       <div class="edu-item fu">
         <div class="edu-degree">Master of Technology Management</div>
@@ -616,7 +596,7 @@
 <section id="contact">
   <div class="container">
     <h2 class="contact-heading fu">Let's build <em>together.</em></h2>
-    <p class="contact-sub fu">I'm looking for full-time product, strategy or growth roles starting summer 2026, at the intersection of technology and consumer products.<br><strong>Always happy to chat!</strong></p>
+    <p class="contact-sub fu">I'm looking for full-time product, strategy or growth roles starting summer 2026, at the intersection of technology and consumer products.<br><strong>Always happy to connect!</strong></p>
     <div class="contact-list">
 
       <a href="mailto:aishwarya.mundada2@gmail.com" class="contact-row fu" style="flex:1.6">
@@ -684,35 +664,6 @@
   },{threshold:0.1});
   document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 
-  // stat counter — 600ms
-  function animCount(el){
-    const t=+el.dataset.count,d=600,s=performance.now();
-    const run=n=>{const p=Math.min((n-s)/d,1);el.textContent=Math.floor(p*t);if(p<1)requestAnimationFrame(run);else el.textContent=t;};
-    requestAnimationFrame(run);
-  }
-  new IntersectionObserver(e=>{
-    e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('[data-count]').forEach(animCount);});
-  },{threshold:.4}).observe(document.querySelector('.stats-panel'));
-
-  // typewriter
-  const roles=['Strategic Growth & Operations','Marketing & GTM','AI Strategist'];
-  let ri=0,ci=0,del=false;
-  const twEl=document.getElementById('twRole');
-  function typewrite(){
-    const w=roles[ri];
-    if(!del){
-      ci++;
-      twEl.innerHTML=w.slice(0,ci)+'<span class="tw-cursor"></span>';
-      if(ci===w.length){setTimeout(()=>{del=true;typewrite();},2400);return;}
-      setTimeout(typewrite,75);
-    } else {
-      ci--;
-      twEl.innerHTML=w.slice(0,ci)+'<span class="tw-cursor"></span>';
-      if(ci===0){del=false;ri=(ri+1)%roles.length;setTimeout(typewrite,380);return;}
-      setTimeout(typewrite,40);
-    }
-  }
-  setTimeout(typewrite,900);
 </script>
 </body>
 </html>
