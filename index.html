@@ -7,9 +7,7 @@
   <title>Aishwarya Mundada - Product - Growth - AI</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg:      #f5f0ed;
       --surface: #ede5df;
@@ -23,19 +21,15 @@
       --ease:    cubic-bezier(0.4,0,0.2,1);
       --mono:    'SFMono-Regular','Consolas',monospace;
     }
-
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
-
     body::before { content:''; position:fixed; inset:0; background-image:radial-gradient(circle,#c4a898 1px,transparent 1px); background-size:30px 30px; opacity:.28; pointer-events:none; z-index:0; }
     .blob { position:fixed; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; }
     .blob-1 { width:440px; height:440px; background:rgba(166,94,70,.09); top:-80px; right:-80px; }
     .blob-2 { width:340px; height:340px; background:rgba(7,32,63,.05); bottom:8%; left:-60px; }
-
     #scrollProg { position:fixed; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--navy),var(--accent)); z-index:300; transition:width .1s linear; }
     #glow { pointer-events:none; position:fixed; width:460px; height:460px; border-radius:50%; background:radial-gradient(circle,rgba(166,94,70,.06) 0%,transparent 68%); transform:translate(-50%,-50%); z-index:0; transition:left .1s ease,top .1s ease; }
-
     /* ── SCROLL TO TOP ── */
     #scrollTop {
       position: fixed; bottom: 28px; right: 28px; z-index: 200;
@@ -50,7 +44,6 @@
     #scrollTop.visible { opacity: 1; transform: translateY(0); }
     #scrollTop:hover { background: var(--accent); }
     #scrollTop svg { width: 18px; height: 18px; }
-
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:200; height:62px; background:rgba(245,240,237,.92); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 52px; transition:box-shadow .3s; }
     nav.scrolled { box-shadow:0 2px 24px rgba(2,0,13,.07); }
@@ -61,19 +54,15 @@
     .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); border-radius:2px; transition:width .25s var(--ease); }
     .nav-links a:hover, .nav-links a.active { color:var(--navy); }
     .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
-
     .container { max-width: 960px; margin:0 auto; padding:0 36px; position:relative; z-index:1; }
     section { padding:96px 0 56px; }
-
     .fu { opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease),transform .6s var(--ease); }
     .fu.in { opacity:1; transform:translateY(0); }
     .fu[data-d="1"] { transition-delay:80ms; }
     .fu[data-d="2"] { transition-delay:160ms; }
     .fu[data-d="3"] { transition-delay:240ms; }
-
     .sec-heading { font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-.02em; line-height:1.2; margin-bottom:44px; color:var(--navy); }
     .sec-heading em { font-style:italic; font-weight:300; color:var(--muted); }
-
     /* ══ HERO ══ */
     #hero { min-height:100vh; padding-top:62px; display:flex; align-items:center; }
     .hero-grid { display:grid; grid-template-columns:1fr 360px; gap:60px; align-items:center; width:100%; padding: 48px 0 32px; }
@@ -92,7 +81,6 @@
     .btn-outline:hover { background:var(--white); border-color:var(--navy); transform:translateY(-2px); }
     .btn-accent { background:var(--accent); color:var(--bg); }
     .btn-accent:hover { background:#8f4e39; transform:translateY(-2px); box-shadow:0 6px 20px rgba(166,94,70,.28); }
-
     /* PHOTO */
     .photo-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
     .photo-ring { width:300px; height:300px; border-radius:50%; border:2px dashed var(--border); display:flex; align-items:center; justify-content:center; animation:spin 40s linear infinite; }
@@ -101,13 +89,11 @@
     .photo-circle img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
     .photo-initials { font-size:60px; font-weight:800; color:var(--navy); letter-spacing:-.04em; line-height:1; }
     .photo-hint { font-size:11px; font-family:var(--mono); color:var(--muted); letter-spacing:.06em; }
-
     /* ══ TYPEWRITER BAND ══ */
     .typewriter-band { background:var(--navy); padding:40px 0; position:relative; z-index:1; text-align:center; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
     .tw-cursor { display:inline-block; width:2px; height:.8em; background:var(--accent); margin-left:3px; vertical-align:middle; animation:blink .7s step-end infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
     /* open to work block below photo */
     .hero-otw {
       margin-top: 20px; width: 100%;
@@ -131,7 +117,6 @@
       transition: background .18s, border-color .18s;
     }
     .otw-role:hover { background: var(--tan); border-color: var(--accent); }
-
     /* ══ ABOUT ══ */
     .about-grid { display:grid; grid-template-columns:1fr auto; gap:56px; align-items:start; }
     .about-text { font-size:16px; line-height:1.85; color:#2a1a10; max-width:560px; }
@@ -142,22 +127,17 @@
     .stat-card:hover { box-shadow:0 6px 24px rgba(2,0,13,.07); border-color:var(--accent); }
     .stat-num { font-size:34px; font-weight:800; color:var(--navy); letter-spacing:-.03em; line-height:1; }
     .stat-label { font-size:10px; font-family:var(--mono); color:var(--muted); margin-top:4px; letter-spacing:.06em; text-transform:uppercase; }
-
     /* ══ EXPERIENCE TIMELINE ══ */
     .exp-timeline { position:relative; padding:12px 0 0; }
     .exp-timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(180deg,var(--accent) 0%,var(--border) 100%); transform:translateX(-50%); }
-
     .exp-entry { display:flex; padding-bottom:44px; position:relative; scroll-margin-top: 90px; }
     .exp-entry.left  { justify-content:flex-end; padding-right:calc(50% + 32px); }
     .exp-entry.right { justify-content:flex-start; padding-left:calc(50% + 32px); }
-
     /* dot */
     .exp-entry::after { content:''; position:absolute; left:50%; top:18px; width:12px; height:12px; border-radius:50%; background:var(--white); border:3px solid var(--accent); transform:translateX(-50%); z-index:2; transition:background .2s; }
     .exp-entry:hover::after { background:var(--accent); }
-
-    /* horizontal connector line — removed */
-
-    /* side label: year + location — in the empty half opposite the card */
+    /* horizontal connector line: removed */
+    /* side label: year + location, in the empty half opposite the card */
     .exp-side {
       position:absolute; top:10px;
       font-family:var(--mono);
@@ -167,10 +147,8 @@
     .exp-entry.right .exp-side { right:calc(50% + 18px); text-align:right; }
     .exp-side-year { font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.04em; }
     .exp-side-loc  { font-size:11px; color:var(--muted); letter-spacing:.03em; margin-top:2px; }
-
     .exp-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:22px 26px; max-width:410px; width:100%; transition:box-shadow .25s,border-color .25s,transform .25s var(--ease); }
     .exp-entry:hover .exp-card { box-shadow:0 8px 32px rgba(2,0,13,.09); border-color:var(--accent); transform:translateY(-2px); }
-
     .exp-company-link { font-size:18px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:3px; display:inline-flex; align-items:center; gap:5px; transition:color .15s; }
     .exp-company-link:hover { color:var(--accent); }
     .exp-company-link .ext { font-size:13px; opacity:.6; }
@@ -185,14 +163,12 @@
     .exp-tags { display:flex; flex-wrap:wrap; gap:5px; }
     .tag { font-size:10px; font-family:var(--mono); background:var(--surface); color:var(--muted); border:1px solid var(--border); padding:3px 10px; border-radius:100px; transition:all .15s; }
     .tag:hover { background:var(--tan); border-color:var(--accent); color:var(--navy); }
-
     /* ══ PROJECTS ══ */
     .proj-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px; }
     .proj-card { border:1px solid var(--border); border-radius:14px; padding:28px; background:var(--white); display:flex; flex-direction:column; gap:10px; transition:box-shadow .25s,border-color .25s,transform .25s var(--ease); cursor:pointer; }
     .proj-card:hover { box-shadow:0 8px 32px rgba(2,0,13,.09); border-color:var(--accent); transform:translateY(-3px); }
     .proj-placeholder { border:2px dashed var(--border); background:var(--surface); align-items:center; justify-content:center; text-align:center; min-height:180px; color:var(--muted); font-size:14px; }
     .ph-icon { font-size:26px; opacity:.28; margin-bottom:8px; }
-
     /* ══ SKILLS ══ */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
     .sk-card { border:1px solid var(--border); border-radius:14px; padding:24px; background:var(--white); transition:box-shadow .2s,transform .2s var(--ease),border-color .2s; }
@@ -205,7 +181,6 @@
     .sk-items { display:flex; flex-direction:column; gap:4px; }
     .sk-item { font-size:13px; color:var(--text); padding:4px 0; border-bottom:1px solid var(--border); }
     .sk-item:last-child { border-bottom:none; }
-
     /* ══ EDUCATION - 1x3 horizontal ══ */
     .edu-list { display:flex; flex-direction:row; gap:14px; flex-wrap:wrap; }
     .edu-item { border:1px solid var(--border); border-radius:14px; padding:24px 22px; background:var(--white); flex:1; min-width:220px; display:flex; flex-direction:column; gap:5px; transition:box-shadow .2s,border-color .2s,transform .2s; }
@@ -215,7 +190,6 @@
     .edu-school-link:hover { color:var(--navy); text-decoration:underline; }
     .edu-desc { font-size:12px; color:var(--muted); line-height:1.55; margin-top:4px; }
     .edu-year { font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:auto; padding-top:12px; border-top:1px solid var(--border); }
-
     /* ══ CONTACT ══ */
     #contact { padding-bottom:120px; }
     .contact-heading { font-size:clamp(32px,5vw,52px); font-weight:800; letter-spacing:-.025em; line-height:1.1; margin-bottom:14px; color:var(--navy); }
@@ -230,9 +204,7 @@
     .cr-val { font-size:13px; font-weight:600; color:var(--navy); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .cr-arrow { font-size:14px; color:var(--muted); transition:transform .2s,color .2s; flex-shrink:0; }
     .contact-row:hover .cr-arrow { transform:translateX(4px); color:var(--navy); }
-
     footer { border-top:1px solid var(--border); padding:28px 0; text-align:center; font-size:12px; color:var(--muted); font-family:var(--mono); position:relative; z-index:1; }
-
     /* ══ RESPONSIVE ══ */
     @media (max-width:860px) {
       .hero-grid { grid-template-columns:1fr; }
@@ -260,19 +232,16 @@
   </style>
 </head>
 <body>
-
 <div id="scrollProg"></div>
 <div id="glow"></div>
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
-
 <!-- SCROLL TO TOP -->
 <button id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"/>
   </svg>
 </button>
-
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">Aishwarya <span>Mundada</span></div>
@@ -283,7 +252,6 @@
     <li><a href="#contact"    data-s="contact">Contact</a></li>
   </ul>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
   <div class="container">
@@ -291,7 +259,7 @@
       <div>
         <h1 class="hero-name fu">AISHWARYA<br><em>MUNDADA</em></h1>
         <p class="hero-tagline fu" data-d="1">
-          <strong>3+ years</strong> in product, growth & strategy across consumer marketplaces, ad tech and medical devices, backed by a <strong>management and technology</strong> foundation. I combine data fluency and applied AI with strategic thinking to run experiments, define roadmaps, and align cross-functional teams in ambiguous environments.
+          <strong>Growth and product marketing</strong>, with a software engineer's instinct for finding friction. Three years across <strong>food delivery, healthcare, and ad tech</strong>; turning the ambiguous problem into a decision to act on.
         </p>
         <div class="hero-btns fu" data-d="3">
           <a href="#experience" class="btn btn-primary">See my work ↓</a>
@@ -321,23 +289,19 @@
             <span class="otw-prefix">Looking for roles in</span>
           </div>
           <div class="otw-roles">
-            <div class="otw-role">Marketing & GTM</div>
-            <div class="otw-role">Applied AI & Strategy</div>
-            <div class="otw-role">Growth & Operations</div>
+            <div class="otw-role">Growth</div>
+            <div class="otw-role">Product Marketing</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <h2 class="sec-heading fu">Building where <em>strategy</em> meets execution.</h2>
     <div class="exp-timeline">
-
       <div class="exp-entry left fu" id="exp-deckers">
         <div class="exp-side">
           <div class="exp-side-year">2026</div>
@@ -358,7 +322,6 @@
           </div>
         </div>
       </div>
-
       <div class="exp-entry right fu" id="exp-swiggy">
         <div class="exp-side">
           <div class="exp-side-year">2024</div>
@@ -380,7 +343,6 @@
           </div>
         </div>
       </div>
-
       <div class="exp-entry left fu" id="exp-bd">
         <div class="exp-side">
           <div class="exp-side-year">2023</div>
@@ -401,7 +363,6 @@
           </div>
         </div>
       </div>
-
       <div class="exp-entry right fu" id="exp-amazon">
         <div class="exp-side">
           <div class="exp-side-year">2022</div>
@@ -421,7 +382,6 @@
           </div>
         </div>
       </div>
-
       <div class="exp-entry left fu" id="exp-keywordio">
         <div class="exp-side">
           <div class="exp-side-year">2020</div>
@@ -430,7 +390,7 @@
         <div class="exp-card">
           <a href="https://www.keywordio.com/" target="_blank" class="exp-company-link">Keywordio <span class="ext">↗</span></a>
           <div class="exp-role">Software Engineer</div>
-          <p class="exp-summary">Shipped 3 ad ops tools end-to-end eliminating 2 hrs/day manual work; built CPA dashboards lifting ROAS 20%; cut platform latency 70%.</p>
+          <p class="exp-summary">Shipped 3 ad ops tools end-to-end eliminating 2 hrs/day manual work, built CPA dashboards lifting ROAS 20% and cut platform latency 70%.</p>
           <div class="exp-metrics">
             <span class="metric m-g">+20% ROAS</span>
             <span class="metric m-p">-70% Latency</span>
@@ -442,11 +402,9 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
@@ -460,7 +418,7 @@
         </div>
         <div style="font-size:17px;font-weight:700;color:var(--navy);line-height:1.25;margin-top:4px;">Predicting Teen Mental Health Crisis due to Phone Usage</div>
         <div style="font-size:12px;color:var(--accent);font-weight:500;margin-top:4px;">Lead Modeler · UCSB Data Analytics Project</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Built a Random Forest classifier for a health insurance client to predict high-risk teens based on behavioral patterns - improving crisis detection from 66% to 92% recall and capturing $377K in net value over the baseline.</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Built a Random Forest classifier for a health insurance client to predict high-risk teens based on behavioral patterns, improving crisis detection from 66% to 92% recall and capturing $377K in net value over the baseline.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;">
           <span class="tag">Random Forest</span>
           <span class="tag">Python</span>
@@ -482,7 +440,6 @@
           </div>
         </div>
       </a>
-
       <!-- P/02: Daily Jobs Scraper -->
       <a href="https://github.com/aishw-m/daily-jobs-scraper" target="_blank" class="proj-card fu" data-d="1" style="text-decoration:none;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
@@ -491,7 +448,7 @@
         </div>
         <div style="font-size:17px;font-weight:700;color:var(--navy);line-height:1.25;margin-top:4px;">Daily Jobs Scraper</div>
         <div style="font-size:12px;color:var(--accent);font-weight:500;margin-top:4px;">Personal Tool · Python & Flask</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Built because no single job board surfaces fresh listings well. Pulls openings from 11 platforms into one searchable local view — filtered by role, recency, and years of experience. Runs entirely on your machine; results never leave it.</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Job hunting meant checking a dozen boards daily. Built one tool that pulls openings from 11 platforms into a single view, filtered by role, recency, and experience level.</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;">
           <span class="tag">Python</span>
           <span class="tag">Flask</span>
@@ -514,15 +471,39 @@
           </div>
         </div>
       </a>
-      <div class="proj-card proj-placeholder fu" data-d="2">
-        <div class="ph-icon">◎</div>
-        <span style="font-weight:600;color:var(--muted)">Coming soon</span>
-        <span style="font-size:11px;font-family:var(--mono);color:var(--border)">P / 03 · In progress</span>
+      <!-- P/03: Resume Copilot -->
+      <div class="proj-card fu" data-d="2">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+          <span style="font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:700;letter-spacing:.08em;">P / 03</span>
+        </div>
+        <div style="font-size:17px;font-weight:700;color:var(--navy);line-height:1.25;margin-top:4px;">Resume Copilot</div>
+        <div style="font-size:12px;color:var(--accent);font-weight:500;margin-top:4px;">Personal Tool · Agentic AI & LaTeX</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;">Tailoring a resume per role is slow. Built an agentic workspace that parses the job description, scores each bullet against it, and generates a formatted LaTeX resume in one click, refined over 30+ iterations against real applications.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;">
+          <span class="tag">Agentic AI</span>
+          <span class="tag">LLM Evaluation</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">Python</span>
+          <span class="tag">LaTeX</span>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">100+</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">JDs Parsed</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">30+</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Iterations</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:18px;font-weight:800;color:var(--navy);">1-Click</div>
+            <div style="font-size:10px;font-family:var(--mono);color:var(--muted);letter-spacing:.04em;">Export</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
@@ -564,7 +545,6 @@
     </div>
   </div>
 </section>
-
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
@@ -591,14 +571,12 @@
     </div>
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <h2 class="contact-heading fu">Let's build <em>together.</em></h2>
-    <p class="contact-sub fu">I'm looking for full-time product, strategy or growth roles starting summer 2026, at the intersection of technology and consumer products.<br><strong>Always happy to connect!</strong></p>
+    <p class="contact-sub fu">I'm looking for full-time growth and product marketing roles at the intersection of technology and consumer products.<br><strong>Always happy to connect!</strong></p>
     <div class="contact-list">
-
       <a href="mailto:aishwarya.mundada2@gmail.com" class="contact-row fu" style="flex:1.6">
         <span class="cr-label">Email</span>
         <div class="cr-main-row">
@@ -609,7 +587,6 @@
           <span class="cr-arrow">→</span>
         </div>
       </a>
-
       <a href="https://linkedin.com/in/aishwarya-mundada" target="_blank" class="contact-row fu" data-d="1">
         <span class="cr-label">LinkedIn</span>
         <div class="cr-main-row">
@@ -620,7 +597,6 @@
           <span class="cr-arrow">→</span>
         </div>
       </a>
-
       <a href="https://github.com/aishw-m" target="_blank" class="contact-row fu" data-d="2">
         <span class="cr-label">GitHub</span>
         <div class="cr-main-row">
@@ -631,20 +607,16 @@
           <span class="cr-arrow">→</span>
         </div>
       </a>
-
     </div>
   </div>
 </section>
-
 <footer>
   <div class="container">© 2026 Aishwarya Mundada &nbsp;·&nbsp; Built with curiosity</div>
 </footer>
-
 <script>
   // cursor glow
   const glow=document.getElementById('glow');
   document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';},{passive:true});
-
   // scroll progress + nav + scroll-to-top
   const bar=document.getElementById('scrollProg'),nav=document.getElementById('nav'),stBtn=document.getElementById('scrollTop');
   const navA=document.querySelectorAll('.nav-links a[data-s]');
@@ -657,13 +629,11 @@
     let cur=''; secs.forEach(s=>{if(scrollY>=s.offsetTop-110)cur=s.id;});
     navA.forEach(l=>l.classList.toggle('active',l.dataset.s===cur));
   },{passive:true});
-
   // fade-up
   const obs=new IntersectionObserver(e=>{
     e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target);}});
   },{threshold:0.1});
   document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
-
 </script>
 </body>
 </html>
