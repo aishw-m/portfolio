@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Aishwarya Mundada - Product Strategy, Growth & AI Builder."/>
-  <title>Aishwarya Mundada - Product - Growth - AI</title>
+  <meta name="description" content="Aishwarya Mundada - Business, Marketplace & Technology Operations."/>
+  <title>Aishwarya Mundada - Business - Marketplace - Technology Operations</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -183,7 +183,13 @@
     .sk-item:last-child { border-bottom:none; }
     /* ══ EDUCATION - 1x3 horizontal ══ */
     .edu-list { display:flex; flex-direction:row; gap:14px; flex-wrap:wrap; }
-    .edu-item { border:1px solid var(--border); border-radius:14px; padding:24px 22px; background:var(--white); flex:1; min-width:220px; display:flex; flex-direction:column; gap:5px; transition:box-shadow .2s,border-color .2s,transform .2s; }
+    .edu-item { border:1px solid var(--border); border-radius:14px; padding:24px 22px; background:var(--white); flex:1; min-width:220px; display:flex; flex-direction:column; gap:5px; transition:box-shadow .2s,border-color .2s,transform .2s; position:relative; }
+    .edu-logo { position:absolute; top:18px; right:18px; object-fit:contain; }
+    .edu-logo.square { width:42px; height:42px; }
+    .edu-logo.wide { width:132px; height:28px; }
+    .edu-item .edu-degree { padding-right:50px; }
+    .edu-item.wide-logo .edu-degree { padding-right:145px; }
+    .nowrap { white-space:nowrap; }
     .edu-item:hover { box-shadow:0 4px 20px rgba(2,0,13,.07); border-color:var(--accent); transform:translateY(-2px); }
     .edu-degree { font-size:16px; font-weight:700; color:var(--navy); line-height:1.25; letter-spacing:-.01em; }
     .edu-school-link { font-size:12px; color:var(--accent); font-weight:500; transition:color .15s; line-height:1.4; }
@@ -259,7 +265,7 @@
       <div>
         <h1 class="hero-name fu">AISHWARYA<br><em>MUNDADA</em></h1>
         <p class="hero-tagline fu" data-d="1">
-          <strong>Growth and product marketing</strong>, with a software engineer's instinct for finding friction. Three years across <strong>food delivery, healthcare, and ad tech</strong>; turning the ambiguous problem into a decision to act on.
+          <strong>Business and marketplace operations</strong> professional using data and technology to improve performance, streamline processes, and scale operations across <strong>e-commerce and consumer tech</strong>.
         </p>
         <div class="hero-btns fu" data-d="3">
           <a href="#experience" class="btn btn-primary">See my work ↓</a>
@@ -286,11 +292,12 @@
           <div class="otw-header">
             <span class="tw-dot"></span>
             <span class="otw-label">Open to Work</span>
-            <span class="otw-prefix">Looking for roles in</span>
+            <span class="otw-prefix">Available immediately</span>
           </div>
           <div class="otw-roles">
-            <div class="otw-role">Growth</div>
-            <div class="otw-role">Product Marketing</div>
+            <div class="otw-role">Business Operations</div>
+            <div class="otw-role">Marketplace Operations</div>
+            <div class="otw-role">Technology Operations</div>
           </div>
         </div>
       </div>
@@ -300,9 +307,24 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <h2 class="sec-heading fu">Building where <em>strategy</em> meets execution.</h2>
+    <h2 class="sec-heading fu">Operating where <em>business</em> and <em>technology</em> meet.</h2>
     <div class="exp-timeline">
-      <div class="exp-entry left fu" id="exp-deckers">
+      <div class="exp-entry left fu" id="exp-supplybistro">
+        <div class="exp-side">
+          <div class="exp-side-year">2026 - Present</div>
+          <div class="exp-side-loc">Remote · Seattle, WA</div>
+        </div>
+        <div class="exp-card">
+          <a href="https://supplybistro.com/" target="_blank" class="exp-company-link">SupplyBistro <span class="ext">↗</span></a>
+          <div class="exp-role">Product Operations Associate</div>
+          <p class="exp-summary">Supporting client readiness and beta testing for a procurement platform, translating customer feedback into product and operational improvements while helping build scalable testing processes.</p>
+          <div class="exp-tags">
+            <span class="tag">Product Ops</span><span class="tag">Client Readiness</span>
+            <span class="tag">Beta Testing</span><span class="tag">Feedback Loops</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-entry right fu" id="exp-deckers">
         <div class="exp-side">
           <div class="exp-side-year">2026</div>
           <div class="exp-side-loc">Santa Barbara, CA, USA</div>
@@ -317,12 +339,12 @@
             <span class="metric m-a">2 Priority Categories</span>
           </div>
           <div class="exp-tags">
-            <span class="tag">GTM Strategy</span><span class="tag">User Research</span>
+            <span class="tag">GTM Strategy</span><span class="tag">Market Research</span>
             <span class="tag">Market Expansion</span><span class="tag">Roadmapping</span>
           </div>
         </div>
       </div>
-      <div class="exp-entry right fu" id="exp-swiggy">
+      <div class="exp-entry left fu" id="exp-swiggy">
         <div class="exp-side">
           <div class="exp-side-year">2024</div>
           <div class="exp-side-loc">Hyderabad, India</div>
@@ -330,7 +352,7 @@
         <div class="exp-card">
           <a href="https://www.swiggy.com/corporate/" target="_blank" class="exp-company-link">Swiggy <span class="ext">↗</span></a>
           <div class="exp-role">Strategic Account Manager</div>
-          <p class="exp-summary">Redesigned restaurant growth strategy around contribution margin, A/B tested re-engagement campaigns, and scaled WAUs 3x during peak season.</p>
+          <p class="exp-summary">Owned performance for a $2.4M/month marketplace category, redesigned partner growth strategy around contribution margin, and scaled WAUs 3x during peak season.</p>
           <div class="exp-metrics">
             <span class="metric m-b">+30% Revenue</span>
             <span class="metric m-g">+12% Market Share</span>
@@ -338,12 +360,12 @@
             <span class="metric m-p">3x WAU Growth</span>
           </div>
           <div class="exp-tags">
-            <span class="tag">A/B Testing</span><span class="tag">Growth</span>
-            <span class="tag">Unit Economics</span><span class="tag">Marketplaces</span><span class="tag">Food Delivery</span>
+            <span class="tag">Marketplace Ops</span><span class="tag">P&amp;L Ownership</span>
+            <span class="tag">Unit Economics</span><span class="tag">Partner Growth</span>
           </div>
         </div>
       </div>
-      <div class="exp-entry left fu" id="exp-bd">
+      <div class="exp-entry right fu" id="exp-bd">
         <div class="exp-side">
           <div class="exp-side-year">2023</div>
           <div class="exp-side-loc">Bangalore, India</div>
@@ -351,19 +373,19 @@
         <div class="exp-card">
           <a href="https://www.bd.com/en-us" target="_blank" class="exp-company-link">Becton, Dickinson & Co. <span class="ext">↗</span></a>
           <div class="exp-role">Management Trainee</div>
-          <p class="exp-summary">Diagnosed adoption blockers across 20+ hospitals, designed clinical onboarding program, and built demand forecast model improving inventory turnover 30%.</p>
+          <p class="exp-summary">Diagnosed adoption blockers across 20+ hospitals, led 20+ clinical trainings, and built a demand forecast model improving inventory turnover 30%.</p>
           <div class="exp-metrics">
             <span class="metric m-g">+28% Revenue</span>
             <span class="metric m-b">+20% New Customers</span>
             <span class="metric m-p">+30% Inv. Turnover</span>
           </div>
           <div class="exp-tags">
-            <span class="tag">Healthcare</span><span class="tag">Demand Forecasting</span>
-            <span class="tag">Onboarding</span><span class="tag">Revenue Growth</span>
+            <span class="tag">Business Development</span><span class="tag">Forecasting</span>
+            <span class="tag">Inventory</span><span class="tag">Client Training</span>
           </div>
         </div>
       </div>
-      <div class="exp-entry right fu" id="exp-amazon">
+      <div class="exp-entry left fu" id="exp-amazon">
         <div class="exp-side">
           <div class="exp-side-year">2022</div>
           <div class="exp-side-loc">Bangalore, India</div>
@@ -378,11 +400,12 @@
             <span class="metric m-g">-10% Resolution Cost</span>
           </div>
           <div class="exp-tags">
-            <span class="tag">Process Automation</span><span class="tag">Operations</span><span class="tag">UX Research</span><span class="tag">RCA</span>
+            <span class="tag">Seller Operations</span><span class="tag">Process Automation</span>
+            <span class="tag">RCA</span><span class="tag">Process Design</span>
           </div>
         </div>
       </div>
-      <div class="exp-entry left fu" id="exp-keywordio">
+      <div class="exp-entry right fu" id="exp-keywordio">
         <div class="exp-side">
           <div class="exp-side-year">2020</div>
           <div class="exp-side-loc">Pune, India</div>
@@ -398,7 +421,7 @@
           </div>
           <div class="exp-tags">
             <span class="tag">Python</span><span class="tag">Ad Tech</span>
-            <span class="tag">API Design</span><span class="tag">Product Development</span>
+            <span class="tag">APIs</span><span class="tag">Automation</span>
           </div>
         </div>
       </div>
@@ -510,36 +533,35 @@
     <h2 class="sec-heading fu">Skills I bring to <em>the table.</em></h2>
     <div class="skills-grid">
       <div class="sk-card fu">
-        <div class="sk-cat p">Product</div>
+        <div class="sk-cat p">Marketplace & Ops</div>
         <div class="sk-items">
-          <div class="sk-item">Problem-Solving</div><div class="sk-item">Roadmapping</div>
-          <div class="sk-item">A/B Testing</div><div class="sk-item">PRD Writing</div>
-          <div class="sk-item">Funnel Analysis</div><div class="sk-item">User Research</div>
+          <div class="sk-item">Marketplace Operations</div><div class="sk-item">Partner & Seller Operations</div>
+          <div class="sk-item">Process Improvement</div><div class="sk-item">Root Cause Analysis</div>
+          <div class="sk-item">Workflow Design</div><div class="sk-item">Operational Strategy</div>
         </div>
       </div>
       <div class="sk-card fu" data-d="1">
         <div class="sk-cat t">Technical</div>
         <div class="sk-items">
-          <div class="sk-item">Agentic AI</div><div class="sk-item">Prompt Engineering</div>
-          <div class="sk-item">Python</div><div class="sk-item">SQL</div>
-          <div class="sk-item">Git</div>
-          <div class="sk-item">Database Architecture</div>
+          <div class="sk-item">SQL</div><div class="sk-item">Python</div>
+          <div class="sk-item">APIs & Automation</div><div class="sk-item">Agentic AI</div>
+          <div class="sk-item">Prompt Engineering</div><div class="sk-item">Git</div>
         </div>
       </div>
       <div class="sk-card fu" data-d="2">
         <div class="sk-cat a">Analytics</div>
         <div class="sk-items">
-          <div class="sk-item">Excel</div><div class="sk-item">Google Analytics</div>
-          <div class="sk-item">Tableau</div><div class="sk-item">Power BI</div>
+          <div class="sk-item">Excel</div><div class="sk-item">Tableau</div>
+          <div class="sk-item">Power BI</div><div class="sk-item">Funnel Analysis</div>
           <div class="sk-item">Unit Economics</div><div class="sk-item">Demand Forecasting</div>
         </div>
       </div>
       <div class="sk-card fu" data-d="3">
         <div class="sk-cat b">Business</div>
         <div class="sk-items">
-          <div class="sk-item">Cross-functional Collab</div><div class="sk-item">Stakeholder Mgmt</div>
-          <div class="sk-item">P&L Ownership</div><div class="sk-item">GTM Strategy</div>
-          <div class="sk-item">Communication</div>
+          <div class="sk-item">P&L Ownership</div><div class="sk-item">Cross-functional Execution</div>
+          <div class="sk-item">Stakeholder Management</div><div class="sk-item">GTM Strategy</div>
+          <div class="sk-item">Business Analysis</div><div class="sk-item">Experimentation</div>
         </div>
       </div>
     </div>
@@ -550,19 +572,22 @@
   <div class="container">
     <h2 class="sec-heading fu">Where I sharpened <em>my thinking.</em></h2>
     <div class="edu-list">
-      <div class="edu-item fu">
+      <div class="edu-item fu wide-logo">
+        <img class="edu-logo wide" src="ucsb-logo.png" alt="UC Santa Barbara logo">
         <div class="edu-degree">Master of Technology Management</div>
         <a href="https://www.ucsb.edu/" target="_blank" class="edu-school-link">University of California, Santa Barbara, USA ↗</a>
         <p class="edu-desc">Focus on working with AI, product strategy, and digital transformation.</p>
         <div class="edu-year">2025 - Jun 2026</div>
       </div>
       <div class="edu-item fu" data-d="1">
+        <img class="edu-logo square" src="imt-logo.png" alt="IMT Ghaziabad logo">
         <div class="edu-degree">MBA, Marketing & Operations</div>
         <a href="https://www.imt.edu/" target="_blank" class="edu-school-link">Institute of Management Technology, Ghaziabad, India ↗</a>
         <p class="edu-desc">Post-graduate diploma in management, specialization in marketing, and business operations.</p>
         <div class="edu-year">2021 - 2023</div>
       </div>
       <div class="edu-item fu" data-d="2">
+        <img class="edu-logo square" src="fergusson-logo.png" alt="Fergusson College logo">
         <div class="edu-degree">Bachelor of Computer Science</div>
         <a href="https://fergusson.edu/" target="_blank" class="edu-school-link">Fergusson College, Pune, India ↗</a>
         <p class="edu-desc">Foundation in algorithms and software engineering shaping how I approach product and systems thinking.</p>
@@ -575,7 +600,7 @@
 <section id="contact">
   <div class="container">
     <h2 class="contact-heading fu">Let's build <em>together.</em></h2>
-    <p class="contact-sub fu">I'm looking for full-time growth and product marketing roles at the intersection of technology and consumer products.<br><strong>Always happy to connect!</strong></p>
+    <p class="contact-sub fu">I'm looking for full-time opportunities in business, marketplace, and technology operations, particularly in consumer technology and<br><span class="nowrap">e&#8209;commerce</span>.<br><strong>Always happy to connect!</strong></p>
     <div class="contact-list">
       <a href="mailto:aishwarya.mundada2@gmail.com" class="contact-row fu" style="flex:1.6">
         <span class="cr-label">Email</span>
